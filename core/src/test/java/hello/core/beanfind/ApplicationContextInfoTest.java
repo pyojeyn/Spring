@@ -9,14 +9,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class ApplicationContextInfoTest {
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
+    // JUnit 5 부터 public 지정 안해도됨.
+
     @Test
     @DisplayName("모든 빈 출력하기")
     void findAllBean(){
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         // iter 치고 tap키 누르면 향상된 for문 자동 완성
         for (String beanDefinitionName : beanDefinitionNames) {
-            Object bean = ac.getBean(beanDefinitionName); // Option + CMD + V 객체 자동완성? Introduce Variable
+            Object bean = ac.getBean(beanDefinitionName); // Option + CMD + V 객체 =>for문 자동완성? Introduce Variable
             System.out.println("name = " + beanDefinitionName + " object = " + bean);
+            
         }
     }
 
