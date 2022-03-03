@@ -1,11 +1,12 @@
 package hello.core.order;
 
 public class Order {
-    private Long memberId;
-    private String itemName;
-    private int itemPrice;
-    private int discountPrice;
+    private Long memberId; // 회원아이디
+    private String itemName; // 상품명
+    private int itemPrice; // 상품가격
+    private int discountPrice; // 할인가격
 
+    //생성자
     public Order(Long memberId, String itemName, int itemPrice, int discountPrice) {
         this.memberId = memberId;
         this.itemName = itemName;
@@ -14,6 +15,7 @@ public class Order {
     }
 
 
+    // 계산
     public int calculatePrice(){
         return itemPrice - discountPrice;
     }

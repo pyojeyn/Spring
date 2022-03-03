@@ -18,20 +18,36 @@ import org.springframework.context.annotation.Configuration;
    MemberServiceImpl -> MemoryMemberRepository
    OrderServiceImpl -> MemoryMemberRepository, FixDiscountPolicy */
 
+/*
+* call AppConfig.memberService
+* call AppConfig.memberRepository
+* call AppConfig.memberRepository
+* 각각 한번씩만 호출된다. 스프링컨테이너가 @Configuration을 통해 싱글톤을 보장해준다?
+* */
+
+
+
 // 설정 정보, 구성 정보
 @Configuration
 public class AppConfig {
+
+    //@Bean memberService -> new MemoryMemberRepository()
+    //@Bean orderService -> new MemoryMemberRepository()
+
     // 각 메서드에다 @Bean 을 작성 해준다. -> 스프링 컨테이너에 등록 됨.
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public MemberRepository memberRepository(){
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
