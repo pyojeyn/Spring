@@ -12,16 +12,16 @@ import org.springframework.context.annotation.FilterType;
 @Configuration
 @ComponentScan(
         basePackages = "hello.core.member",
-        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes=Configuration.class)
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes=Configuration.class) // @Configuration 이 붙은 클래스는 제외하고 스캔한다.
 )
 public class AutoAppConfig {
-    @Bean(name = "memoryMemberRepository")
-    MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository")
+//    MemberRepository memberRepository(){
+//        return new MemoryMemberRepository();
+//    }
 }
-// 수동이 우선순위이다 @Bean > @Component !! MemberRepository에 @Component로 등록이 되어있는 상태인데 또 여기서 MemberRepository를 @Bean으로 등록해주었다.
-// 그러면 충돌이 발생한다. CoreApplication을 실행해보면 아래와 같은 오류가 발생할 것이다.
+// 수동이 우선순위이다 @Bean > @Component !! MemberRepository 에 @Component 로 등록이 되어있는 상태인데 또 여기서 MemberRepository를 @Bean으로 등록해주었다.
+// 그러면 충돌이 발생한다. CoreApplication 을 실행해보면 아래와 같은 오류가 발생할 것이다.
 /*
 ***************************
 APPLICATION FAILED TO START

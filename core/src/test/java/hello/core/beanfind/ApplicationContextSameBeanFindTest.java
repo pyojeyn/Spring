@@ -8,9 +8,11 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 
 import java.util.Map;
@@ -18,7 +20,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ApplicationContextSameBeanFindTest {
-    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SameBeanConfig.class);
+    ApplicationContext ac = new AnnotationConfigApplicationContext(SameBeanConfig.class);
 
     @Test
     @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면, 중복 오류가 발생한다.")

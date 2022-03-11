@@ -25,7 +25,7 @@ public class ConfigurationSingletonTest {
         MemberRepository memberRepository2 = orderService.getMemberRepository();
 
 
-        // 똑같이 나옴 세번의 new 가 호출되지 않고 같은 instance 가 나온다.
+//         똑같이 나옴 세번의 new 가 호출되지 않고 같은 instance 가 나온다.
         System.out.println("memberService -> memberRepository1 = " + memberRepository1);
         System.out.println("orderService -> memberRepository2 = " + memberRepository2);
         System.out.println("memberRepository = " + memberRepository);

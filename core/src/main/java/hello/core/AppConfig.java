@@ -9,6 +9,7 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -49,6 +50,7 @@ public class AppConfig {
     public OrderService orderService(){
         System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return null;
     }
 
     // 할인 정책 바꾸고 싶을 떈 여기서만 바꿔주면 된다. Fix로 할건지 Rate로 할건지~
