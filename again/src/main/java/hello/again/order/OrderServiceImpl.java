@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService{
     // 인터페이스에만 의존하도록 설계와 코드 변경 ! 그럼 구현체는 어떻할까? 지금 이상태로 orderServiceTest 돌리면 NullPointException 발생
     // 이 문제를 해결하려면 누군가가 클라이언트인 OrderServiceImpl 에 DiscountPolicy 의 구현객체를 대신 생성하고 주입해주어야 함.
 
-
+    
 
 
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();

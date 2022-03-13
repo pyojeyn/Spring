@@ -7,13 +7,21 @@ import hello.again.member.MemberServiceImpl;
 import hello.again.order.Order;
 import hello.again.order.OrderService;
 import hello.again.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) { // 실행 단축키 ctrl + shift + R
 
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
-        OrderService orderService = appConfig.orderService();
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        MemberService memberService = ac.getBean("memberService", MemberService.class);
+        OrderService orderService = ac.getBean("orderService", OrderService.class);
+
+
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+//        OrderService orderService = appConfig.orderService();
 
 
 //        MemberService memberService = new MemberServiceImpl();
@@ -28,3 +36,5 @@ public class OrderApp {
 
     }
 }
+
+// ApplicationContext 를 스프링컨테이너하 함
