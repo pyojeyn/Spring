@@ -1,10 +1,10 @@
 package hello.again.order;
 
 public class Order {
-    private Long memberId;
-    private String itemName;
-    private int itemPrice;
-    private int discountPrice;
+    private Long memberId; // 회원 ID
+    private String itemName; // 상품명
+    private int itemPrice; // 상품가격
+    private int discountPrice; // 할인가격
 
     public Order(Long memberId, String itemName, int itemPrice, int discountPrice) {
         this.memberId = memberId;
