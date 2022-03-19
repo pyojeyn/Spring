@@ -36,6 +36,7 @@ public class ApplicationContextSameBeanFindTest {
                 MemberRepository.class);
         assertThat(memberRepository).isInstanceOf(MemberRepository.class);
     }
+    //음
 
     @Test
     @DisplayName("특정 타입을 모두 조회하기")
