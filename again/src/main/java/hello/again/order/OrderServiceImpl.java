@@ -6,13 +6,17 @@ import hello.again.discount.RateDiscountPolicy;
 import hello.again.member.Member;
 import hello.again.member.MemberRepository;
 import hello.again.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     // 인터페이스에만 의존 => DIP 준수
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
@@ -36,5 +40,10 @@ public class OrderServiceImpl implements OrderService{
         Member member = memberRepository.findById(memberId);
         int discountPrice = discountPolicy.discount(member, itemPrice); // 할인은 니가 알아서 단일책임 원칙 !
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
