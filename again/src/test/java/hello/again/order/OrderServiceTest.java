@@ -1,10 +1,8 @@
 package hello.again.order;
 
 import hello.again.AppConfig;
-import hello.again.member.Grade;
-import hello.again.member.Member;
-import hello.again.member.MemberService;
-import hello.again.member.MemberServiceImpl;
+import hello.again.discount.FixDiscountPolicy;
+import hello.again.member.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,4 +32,6 @@ public class OrderServiceTest {
         assertThat(order.getDiscountPrice()).isEqualTo(1000);
 
     }
+
+
 }
