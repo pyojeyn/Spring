@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceImplTest {
 
-
     @Test
     void createOrder(){
         MemoryMemberRepository memberRepository = new MemoryMemberRepository();
@@ -21,4 +20,5 @@ class OrderServiceImplTest {
         Order order = orderService.createOrder(1L, "itemA", 10000);
         assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
+
 }
