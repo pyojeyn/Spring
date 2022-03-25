@@ -27,11 +27,11 @@ public class ConfigurationSingletonTest {
 
         /*
           new 한번만 됨 같은 instance 조회.
-        * MemberService -> memberRepository1 = hello.again.member.MemoryMemberRepository@1b2c4efb
+          MemberService -> memberRepository1 = hello.again.member.MemoryMemberRepository@1b2c4efb
           OrderService -> memberRepository2 = hello.again.member.MemoryMemberRepository@1b2c4efb
           memoryRepository = hello.again.member.MemoryMemberRepository@1b2c4efb
           같은 결과값
-        * */
+        */
         System.out.println("MemberService -> memberRepository1 = " + memberRepository1);
         System.out.println("OrderService -> memberRepository2 = " + memberRepository2);
         System.out.println("memoryRepository = " + memberRepository);
@@ -48,6 +48,5 @@ public class ConfigurationSingletonTest {
 
         System.out.println("bean.getClass() = " + bean.getClass());
         //bean.getClass() = class hello.again.AppConfig$$EnhancerBySpringCGLIB$$ac4ed1dd
-
     }
 }
