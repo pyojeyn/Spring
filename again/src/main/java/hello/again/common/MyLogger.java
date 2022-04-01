@@ -41,4 +41,6 @@ public class MyLogger {
     uuid 를 저장해두면 다른 HTTP 요청과 구분할 수 있다.
     이 빈이 소멸되는 시점에 '@PreDestroy' 를 사용해서 종료 메시지를 남긴다.
     'requestURL' 은 이 빈이 생성되는 시점에는 알 수 없으므로, 외부에서 setter 로 입력 받는다.
+    
+    == 스프링 핵심원리 수업 끝 -- 다음 -> 스프링 MVC 핵심원리 듣기!
 */
