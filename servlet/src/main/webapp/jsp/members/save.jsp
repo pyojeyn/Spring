@@ -24,5 +24,5 @@
         <li>age = <%=member.getAge()%></li>
     </ul>
 </body>
-<a href="index.html">메인</a>
+<a href="/index.html">메인</a>
 </html>
