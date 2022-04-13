@@ -9,6 +9,8 @@ import java.io.IOException;
 
 @WebServlet(name = "helloServlet", urlPatterns = "/hello")
 public class HelloServlet extends HttpServlet {
+
+    // HTTP 요철을 통해 매핑된 URL 이 호출되면 서블릿 컨테이너는 이 메서드를 실행한다.
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("HelloServlet.service");
@@ -28,3 +30,9 @@ public class HelloServlet extends HttpServlet {
 }
 //http://localhost:8080/hello?username=pyo 로 호출
 //?username=pyo 는 쿼리파라미터이고 서블릿에서는 getParameter 로 가져올 수 있다.
+
+/*
+* @WebServlet 서블릿 애노테이션
+* - name: 서블릿 이름
+* - urlPatterns: URL 매핑
+* */
