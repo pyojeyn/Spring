@@ -17,22 +17,20 @@ public class RequestHeaderServlet extends HttpServlet {
         printHeaders(request);
         printHeaderUtils(request);
         printEtc(request);
+
+        response.getWriter().write("okay!");
     }
 
     //start line 정보
     private void printStartLine(HttpServletRequest request) {
         System.out.println("--- REQUEST-LINE - start ---");
         System.out.println("request.getMethod() = " + request.getMethod()); //GET
-        System.out.println("request.getProtocal() = " + request.getProtocol()); //HTTP/1.1
+        System.out.println("request.getProtocol() = " + request.getProtocol()); //HTTP/1.1
         System.out.println("request.getScheme() = " + request.getScheme()); //http
-        // http://localhost:8080/request-header
-        System.out.println("request.getRequestURL() = " + request.getRequestURL());
-        // /request-test
-        System.out.println("request.getRequestURI() = " + request.getRequestURI());
-        //username=hi
-        System.out.println("request.getQueryString() = " +
-                request.getQueryString());
-        System.out.println("request.isSecure() = " + request.isSecure()); //https사용 유무
+        System.out.println("request.getRequestURL() = " + request.getRequestURL()); // http://localhost:8080/request-header
+        System.out.println("request.getRequestURI() = " + request.getRequestURI()); // /request-header
+        System.out.println("request.getQueryString() = " + request.getQueryString()); // username=hi
+        System.out.println("request.isSecure() = " + request.isSecure()); //https 사용 유무
         System.out.println("--- REQUEST-LINE - end ---");
         System.out.println();
     }
@@ -48,7 +46,6 @@ public class RequestHeaderServlet extends HttpServlet {
 //        }
 
         request.getHeaderNames().asIterator().forEachRemaining(headerName -> System.out.println(headerName+": " + headerName));
-
         System.out.println("--- Headers - end ---");
         System.out.println();
     }
@@ -56,18 +53,20 @@ public class RequestHeaderServlet extends HttpServlet {
     //Header 편리한 조회
     private void printHeaderUtils(HttpServletRequest request) {
         System.out.println("--- Header 편의 조회 start ---");
+
         System.out.println("[Host 편의 조회]");
-        System.out.println("request.getServerName() = " + request.getServerName()); //Host 헤더 System.out.println("request.getServerPort() = " +
-        System.out.println("request.getServerPort()"+request.getServerPort()); //Host 헤더 System.out.println();
+        System.out.println("request.getServerName() = " + request.getServerName()); // localhost
+        System.out.println("request.getServerPort() = "+request.getServerPort()); // 8080
         System.out.println();
 
         System.out.println("[Accept-Language 편의 조회]");
         request.getLocales().asIterator()
                 .forEachRemaining(locale -> System.out.println("locale = " + locale));
-        System.out.println("request.getLocale() = " + request.getLocale());
+        System.out.println("request.getLocale() = " + request.getLocale()); //request.getLocale() = ko_KR
         System.out.println();
 
-        System.out.println("[cookie 편의 조회]"); if (request.getCookies() != null) {
+        System.out.println("[cookie 편의 조회]");
+        if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
                 System.out.println(cookie.getName() + ": " + cookie.getValue());
             } }
@@ -88,9 +87,9 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getRemotePort() = " + request.getRemotePort()); //
         System.out.println();
         System.out.println("[Local 정보]");
-        System.out.println("request.getLocalName() = " + request.getLocalName()); //
-        System.out.println("request.getLocalAddr() = " + request.getLocalAddr()); //
-        System.out.println("request.getLocalPort() = " + request.getLocalPort()); //
+        System.out.println("request.getLocalName() = " + request.getLocalName()); // localhost
+        System.out.println("request.getLocalAddr() = " + request.getLocalAddr()); // 0:0:0:0:0:0:0:1
+        System.out.println("request.getLocalPort() = " + request.getLocalPort()); // 8080
         System.out.println("--- 기타 조회 end ---");
         System.out.println();
     }
