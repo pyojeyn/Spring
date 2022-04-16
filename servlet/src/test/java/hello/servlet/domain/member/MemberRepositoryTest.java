@@ -23,7 +23,6 @@ public class MemberRepositoryTest  {
         //given
         Member member = new Member("jane", 27);
 
-
         //when
         Member saveMember = memberRepository.save(member);
 
