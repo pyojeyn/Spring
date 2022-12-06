@@ -75,14 +75,14 @@ public class CatalogServiceImpl implements CatalogService {
         // 1. 자식 엔티티 생성할 때 toEntity 매개변수에다가 부모엔티티들 넣어주기 꼮 !
         // 2. 빌드할때 먼저 Mapper 부터 추가하고 빌드하기 ! Mapper 추가하고 빌드 안하고 바로 그 Mapper 메소드 호출하는 코드 작성하면 아직 그 매퍼 구현체 안생겼는데 저 코드 실행하려 해서
         //    [Several possible source properties for target property "id".] 이런 에러남. ;
-        if (body.getMatchedCategories() != null){
-            List<MatchedCategory> matchedCategories =
-                    body.getMatchedCategories().stream().
-                            map((matchedCategory) -> CatalogMapper.INSTANCE.toEntity(userLinkingCommerceRepository.findById(matchedCategory.getUserLinkingCommerceId()).orElseThrow()
-                                    , category, matchedCategory.getLinkingCommerceCategoryId(),  matchedCategory.getLinkingCommerceCategoryName())).collect(Collectors.toList());
-
-            matchedCategoryRepository.saveAll(matchedCategories);
-        }
+//        if (body.getMatchedCategories() != null){
+//            List<MatchedCategory> matchedCategories =
+//                    body.getMatchedCategories().stream().
+//                            map((matchedCategory) -> CatalogMapper.INSTANCE.toEntity(userLinkingCommerceRepository.findById(matchedCategory.getUserLinkingCommerceId()).orElseThrow()
+//                                    , category, matchedCategory.getLinkingCommerceCategoryId(),  matchedCategory.getLinkingCommerceCategoryName())).collect(Collectors.toList());
+//
+//            matchedCategoryRepository.saveAll(matchedCategories);
+//        }
         /*
         * insert into
             j_category

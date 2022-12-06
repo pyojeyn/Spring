@@ -3,6 +3,7 @@ package com.jpachalle.jpachallenge.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jpachalle.jpachallenge.enums.MultiFactorAuthenticationType;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
 import org.hibernate.annotations.*;
 
@@ -110,6 +111,16 @@ public class User {
         this.multiFactorAuthenticationType = multiFactorAuthenticationType;
         this.emailAgreedDatetime = emailAgreedDatetime;
         this.smsAgreedDatetime = smsAgreedDatetime;
+    }
+
+
+
+    @QueryProjection
+    public User(String name, String emailAddress,
+               Timestamp createDateTime) {
+        this.emailAddress = emailAddress;
+        this.name = name;
+        this.createDateTime = createDateTime;
     }
 
 }

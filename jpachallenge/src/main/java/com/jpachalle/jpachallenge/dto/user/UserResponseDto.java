@@ -1,4 +1,4 @@
-package com.jpachalle.jpachallenge.dto;
+package com.jpachalle.jpachallenge.dto.user;
 
 import org.hibernate.validator.constraints.Length;
 

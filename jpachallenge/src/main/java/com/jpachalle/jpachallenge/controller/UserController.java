@@ -1,13 +1,27 @@
 package com.jpachalle.jpachallenge.controller;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.jpachalle.jpachallenge.dto.AuthenticationRequest;
 import com.jpachalle.jpachallenge.dto.AuthenticationResponse;
+import com.jpachalle.jpachallenge.dto.ListItemResponseDto;
+import com.jpachalle.jpachallenge.dto.OffsetBasedPageRequest;
+import com.jpachalle.jpachallenge.dto.user.UserListRequestDto;
+import com.jpachalle.jpachallenge.dto.user.UserListResponseDto;
+import com.jpachalle.jpachallenge.dto.user.UserResponseDto;
 import com.jpachalle.jpachallenge.entity.Role;
 import com.jpachalle.jpachallenge.enums.RoleName;
 import com.jpachalle.jpachallenge.filter.provider.JwtTokenProvider;
+import com.jpachalle.jpachallenge.service.UserService;
 import com.jpachalle.jpachallenge.service.impl.SecurityUserServiceImpl;
+import com.jpachalle.jpachallenge.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Parameter;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +30,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,18 +40,13 @@ import java.util.Map;
 @Slf4j
 @RequestMapping("/me")
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
     private AuthenticationManager authenticationManagerBean;
     private JwtTokenProvider jwtTokenProvider;
     private SecurityUserServiceImpl securityUserService;
-
-    public UserController(AuthenticationManager authenticationManagerBean, SecurityUserServiceImpl securityUserService, JwtTokenProvider jwtTokenProvider) {
-        this.authenticationManagerBean = authenticationManagerBean;
-        this.securityUserService = securityUserService;
-        this.jwtTokenProvider = jwtTokenProvider;
-    }
-
+    private final UserService userService;
 
     @PostMapping("/login")
     public AuthenticationResponse createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
@@ -70,10 +80,23 @@ public class UserController {
         return new AuthenticationResponse(jwt);
     }
 
+
+
     @GetMapping("/test")
     public String testdd(){
         return "왜 안되는거?";
     }
 
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/userList")
+    public ListItemResponseDto<UserListResponseDto> getUserList
+            ( @RequestParam Map<String, String> params,
+            @PageableDefault(size = 10)  Pageable pageable){
+
+        JsonMapper mapper = JsonMapper.builder().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).build();
+        UserListRequestDto queryDto= mapper.convertValue(params, UserListRequestDto.class);
+
+        return userService.getUserList(queryDto, pageable);
+    }
 }
