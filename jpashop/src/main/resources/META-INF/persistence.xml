@@ -15,7 +15,7 @@
             <property name="hibernate.show_sql" value="true"/> <!--쿼리문출력-->
             <property name="hibernate.format_sql" value="true"/> <!--쿼리문이쁘게-->
             <property name="hibernate.use_sql_comments" value="true"/> <!--어떤쿼리인지 왜나온건지 알려주는거-->
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
 </persistence>
