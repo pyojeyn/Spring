@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
 public abstract class Item {
-
+//1210 다시확인
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
