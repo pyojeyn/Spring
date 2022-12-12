@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Order extends BaseEntity{
     // 테이블에서 FK인 MEMBER_ID 가 ORDERS 테이블에 있으므로 얘가 연관관계의 주인이다.
 
     @Id
@@ -29,6 +29,10 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
 
     // 양방향 연관관계...
     // 하는 이유 : querydsl 이나 jpql 을  복잡하게 짜기 위해서;

@@ -3,9 +3,9 @@ package jpabook.jpashop.domain;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
-public abstract class Item {
+public abstract class Item extends BaseEntity{
 //또 확인
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
