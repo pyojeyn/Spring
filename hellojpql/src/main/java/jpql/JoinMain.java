@@ -15,17 +15,27 @@ public class JoinMain {
         try{
             Team team = new Team();
             team.setName("teamA");
-            em.persist(team);
+            em.persist(team); // team 먼저 저장.
 
             Member member = new Member();
-            member.setUsername("member1");
+            member.setUsername("teamA");
             member.setAge(23);
             member.setTeam(team);
-            em.persist(member);
+            em.persist(member); // member 저장.
 
-            String query = "select m from Member m, Team t  where m.username = t.name";
-            List<Member> result = em.createQuery(query, Member.class)
+            em.flush();
+            em.clear();
+
+            String query1 = "select t from Member m inner join m.team t where t.name = :teamName"; // inner join
+            String query2 = "select m from Member m left outer join m.team t"; // left (outer) join
+            String query3 = "select m from Member m, Team t where m.username = t.name"; // cross join
+
+            String query4 = "select m from Member m left join m.team t on t.name = 'teamA'";
+            String query5 = "select m from Member m left join Team t on m.username = t.name";
+            List<Member> result = em.createQuery(query5, Member.class)
                             .getResultList();
+
+            System.out.println("result.size=" + result.size());
 
 
             tx.commit();
