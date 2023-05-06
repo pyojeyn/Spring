@@ -21,6 +21,7 @@ public class JoinMain {
             member.setUsername("teamA");
             member.setAge(23);
             member.setTeam(team);
+            member.setMemberType(MemberType.ADMIN);
             em.persist(member); // member 저장.
 
             em.flush();
@@ -34,6 +35,19 @@ public class JoinMain {
             String query5 = "select m from Member m left join Team t on m.username = t.name";
             List<Member> result = em.createQuery(query5, Member.class)
                             .getResultList();
+
+            String query6 = "select m.username, 'HELLO', true From Member m " +
+                    "where m.memberType = :userType";
+
+            List<Object[]> result2 = em.createQuery(query6)
+                            .setParameter("userType", MemberType.ADMIN)
+                                    .getResultList();
+            System.out.println("====================================");
+            for(Object[] objects : result2){
+                System.out.println("0 = " + objects[0]);
+                System.out.println("1 = " + objects[1]);
+                System.out.println("2 = " + objects[2]);
+            }
 
             System.out.println("result.size=" + result.size());
 
