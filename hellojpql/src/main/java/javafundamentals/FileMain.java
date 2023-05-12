@@ -79,6 +79,8 @@ public class FileMain {
                 byteArrays.add(fileByte);
                 byteArrays.add("\r\n".getBytes(StandardCharsets.UTF_8));
 
+                System.out.println("stringBuilder= " + stringBuilder);
+
             }else{
                 stringBuilder.append("Content-Disposition: form-data; name=").append("\"")
                         .append(data.getKey()).append("\"").append(";").append("\r\n").append("\r\n")
