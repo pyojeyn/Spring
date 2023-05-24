@@ -2,7 +2,6 @@ package javafundamentals.dto;
 
 import lombok.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @Getter
@@ -10,25 +9,9 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @Builder
-public class UserInfoResponseDto {
-
-    private BigInteger id;
-
-    private String name;
-
-    private String nickName;
-
-    private String mobileNumber;
-
-    private String roleName;
-
-    private String createdDateTime;
-
-    private String emailAddress;
-
-    private Boolean isRepresentative;
-
+public class Girls {
     private List<BoyFriend> boyFriends;
+    private String name;
 
     @Getter
     @Setter
@@ -38,5 +21,4 @@ public class UserInfoResponseDto {
         private Integer age;
         private String name;
     }
-
 }
