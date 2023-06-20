@@ -14,11 +14,11 @@ public class UserInfoResponseDto {
 
     private BigInteger id;
 
-    private String name;
+    public String name;
 
-    private String nickName;
+    public String nickName;
 
-    private String mobileNumber;
+    public String mobileNumber;
 
     private String roleName;
 
