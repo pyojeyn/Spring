@@ -47,7 +47,7 @@ public class ForAndForMain {
         Girls.BoyFriend 지훈 = Girls.BoyFriend.builder().name("강호").age(22).build();
         Girls.BoyFriend 강훈 = Girls.BoyFriend.builder().name("삼식").age(21).build();
         Girls.BoyFriend 민수 = Girls.BoyFriend.builder().name("민호").age(21).build();
-        Girls.BoyFriend 강수 = Girls.BoyFriend.builder().name("히히").age(21).build();
+        Girls.BoyFriend 강수 = Girls.BoyFriend.builder().name("돌쇠").age(21).build();
 
         List<UserInfoResponseDto.BoyFriend> 남자친구들 = List.of(돌쇠, 민호, 침착, 강호, 삼식);
         List<Girls.BoyFriend> 걸스남자친구들 = List.of(지수, 지훈, 강훈, 민수, 강수);
@@ -55,34 +55,34 @@ public class ForAndForMain {
         yeri.setBoyFriends(걸스남자친구들);
 
         // stream 으로 걸렀을 때
-        List<Girls.BoyFriend> 나이같은애들 =  danial.getBoyFriends().stream().map((ub) -> {
-            System.out.println("userInfo  "+ub.getName());
-            Girls.BoyFriend 걸스남자친구들ㅎ = yeri.getBoyFriends().stream()
-                    .filter((gb) ->gb.getName().equals(ub.getName()))
-//                    .findAny().get();
-                    .findAny().orElse(Girls.BoyFriend.builder().name("이름없음").build());
-            return 걸스남자친구들ㅎ;
-        }).collect(Collectors.toList());
+//        List<Girls.BoyFriend> 나이같은애들 =  danial.getBoyFriends().stream().map((ub) -> {
+//            System.out.println("userInfo  "+ub.getName());
+//            Girls.BoyFriend 걸스남자친구들ㅎ = yeri.getBoyFriends().stream()
+//                    .filter((gb) ->gb.getName().equals(ub.getName()))
+//                    .findAny().orElseThrow();
+////                    .findAny().orElse(Girls.BoyFriend.builder().name("이름없음").build());
+//            return 걸스남자친구들ㅎ;
+//        }).collect(Collectors.toList());
 
-//        List<Girls.BoyFriend> 나이같은애들 = new ArrayList<>();
+        List<Girls.BoyFriend> 나이같은애들 = new ArrayList<>();
         List<UserInfoResponseDto.BoyFriend> usersBF = danial.getBoyFriends();
         List<Girls.BoyFriend> girlBF = yeri.getBoyFriends();
-//        for (UserInfoResponseDto.BoyFriend boyFriend : usersBF) {
-//
-//            System.out.println("user.name " + boyFriend.getName());
-//            String name = boyFriend.getName();
-//
-//            Girls.BoyFriend gBF = null;
-//
-//            for (Girls.BoyFriend friend : girlBF) {
-//                System.out.println("girlBF.name " + friend.getName());
-//                if(name.equals(friend.getName())){
-//                    gBF = friend;
-//                    나이같은애들.add(gBF);
-//                    break;
-//                }
-//            }
-//        }
+        for (UserInfoResponseDto.BoyFriend boyFriend : usersBF) {
+
+            System.out.println("user.name " + boyFriend.getName());
+            String name = boyFriend.getName();
+
+            Girls.BoyFriend gBF = null;
+
+            for (Girls.BoyFriend friend : girlBF) {
+                System.out.println("girlBF.name " + friend.getName());
+                if(name.equals(friend.getName())){
+                    gBF = friend;
+                    나이같은애들.add(gBF);
+                    break;
+                }
+            }
+        }
 
 
         for (Girls.BoyFriend boyFriend : 나이같은애들) {
