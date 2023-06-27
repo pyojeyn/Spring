@@ -1,4 +1,5 @@
 package javafundamentals;
+
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 
 import java.util.Locale;
