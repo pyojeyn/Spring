@@ -8,6 +8,7 @@ import java.util.List;
 
 public class JoinMain {
     public static void main(String[] args) {
+        // 0703 어 이거 뭐지?
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
