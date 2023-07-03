@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TestServiceImpl implements TestService {
 
-    // 마지막 잔디  TEST
+    
     private final AuthUtils authUtils;
 
     @Override
