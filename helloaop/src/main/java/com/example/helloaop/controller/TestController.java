@@ -44,7 +44,10 @@ public class TestController {
 
 
 
-
+    @GetMapping("tokentest")
+    public void tokenTest(){
+        testService.tokenTest();
+    }
 
 
 }

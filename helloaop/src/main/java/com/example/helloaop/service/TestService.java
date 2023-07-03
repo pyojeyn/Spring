@@ -8,4 +8,6 @@ public interface TestService {
     void only(int num);
 
     void only(int num, String text);
+
+    void tokenTest();
 }
